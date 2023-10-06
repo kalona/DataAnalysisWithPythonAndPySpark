@@ -6,10 +6,10 @@ import pyspark.sql.functions as F
 
 spark = SparkSession.builder.getOrCreate()
 
-DIRECTORY = "./data/broadcast_logs"
+DIRECTORY = "DataAnalysisWithPythonAndPySpark-Data/broadcast_logs"
 logs = (
     spark.read.csv(
-        os.path.join(DIRECTORY, "BroadcastLogs_2018_Q3_M8.CSV"),
+        os.path.join(DIRECTORY, "BroadcastLogs_2018_Q3_M8_sample.CSV"),
         sep="|",
         header=True,
         inferSchema=True,
@@ -25,3 +25,5 @@ logs = (
         ),
     )
 )
+
+logs.show(5)
